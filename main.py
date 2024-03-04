@@ -23,17 +23,18 @@ async def get_data(color: str, width: int, height: int, format: str, text: str =
 
     image = Image.new("RGB", (width, height), color_tuple)
     draw = ImageDraw.Draw(image)
-    font_size = 1
-    font = ImageFont.load_default(size=font_size)
-    text_width = draw.textlength(text, font=font)
-    text_height = font_size;
-    while text_width < width * 0.8 and text_height < height * 0.8:
-        font_size += 1
+    if len(text) > 0:
+        font_size = 1
         font = ImageFont.load_default(size=font_size)
         text_width = draw.textlength(text, font=font)
         text_height = font_size;
-    text_position = ((width - text_width) // 2, (height - text_height) // 2)
-    draw.text(text_position, text, fill="white", font=font)
+        while text_width < width * 0.8 and text_height < height * 0.8:
+            font_size += 1
+            font = ImageFont.load_default(size=font_size)
+            text_width = draw.textlength(text, font=font)
+            text_height = font_size;
+        text_position = ((width - text_width) // 2, (height - text_height) // 2)
+        draw.text(text_position, text, fill="white", font=font)
 
     img_byte_array = BytesIO()
     image.save(img_byte_array, format=fileformat)
