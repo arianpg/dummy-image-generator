@@ -40,4 +40,4 @@ async def get_data(color: str, width: int, height: int, format: str, text: str =
     image.save(img_byte_array, format=fileformat)
     img_byte_array.seek(0)
 
-    return Response(content=img_byte_array.getvalue(), media_type="image/" + format)
+    return Response(content=img_byte_array.getvalue(), media_type="image/" + fileformat.lower())

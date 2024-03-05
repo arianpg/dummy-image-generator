@@ -1,5 +1,10 @@
 # dummy-image-generator
 
+## Overview
+Generate a filled rectangle image for testing.
+- Support image format: png, jpg
+- Text can be embedded in image
+
 ## How to use this image
 ```bash
 docker run -d -p 8080:8080 --name dummy-image-generator arianpg/dummy-image-generator
