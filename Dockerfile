@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.10.13-slim-bookworm
 
 WORKDIR /app
 COPY ./main.py /app/main.py
